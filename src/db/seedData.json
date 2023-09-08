@@ -1,0 +1,183 @@
+[
+    {
+    "title": "Gracia M5 - Natural - Diestro",
+    "thumbnail_id": "871248-MLA44490472355_012021",
+    "order_backend": 43,
+    "price": 56000.33,
+    "sold_quantity": 150,
+    "available_quantity": 30,
+    "marca": "Gracia",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Eléctrica Fender Player Telecaster De Aliso Butterscotch Blonde Brillante Con Diapasón De Arce",
+    "thumbnail_id": "606749-MLA46365746591_062021",
+    "order_backend": 1,
+    "price": 982574.45,
+    "sold_quantity": 1,
+    "available_quantity": 10,
+    "marca": "Fender",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Criolla Clásica Gracia M7 Para Diestros",
+    "thumbnail_id": "771758-MLA44163914104_112020",
+    "order_backend": 6,
+    "price": 78520,
+    "sold_quantity": 2,
+    "available_quantity": 15,
+    "marca": "Gracia",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Eléctrica Parquer Custom Stratocaster De Caoba 2019 Celeste Laca",
+    "thumbnail_id": "734234-MLA48688966237_122021",
+    "order_backend": 9,
+    "price": 106977,
+    "sold_quantity": 3,
+    "available_quantity": 2,
+    "marca": "Parquer",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Criolla Clásica Yamaha C40 Para Diestros Natural Palo De Rosa Brillante",
+    "thumbnail_id": "688069-MLA44114804079_112020",
+    "order_backend": 18,
+    "price": 105691.19,
+    "sold_quantity": 25,
+    "available_quantity": 10,
+    "marca": "Yamaha",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Acústica Fender Classic Design Cd-60s Para Diestros Natural Brillante",
+    "thumbnail_id":  "886051-MLA43653104944_102020",
+    "order_backend": 2,
+    "price": 216449.64,
+    "sold_quantity": 5,
+    "available_quantity": 3,
+    "marca": "Fender",
+    "sound": "Acústica"
+    },
+    {
+    "title": "Guitarra Eléctrica Para Zurdo Sx Vintage Series Ftl-50 Telecaster De Tilo 2000 Butterscotch Blonde Brillante Con Diapasón De Arce",
+    "thumbnail_id": "635048-MLA48123653039_112021",
+    "order_backend": 11,
+    "price": 244629,
+    "sold_quantity": 5,
+    "available_quantity": 2,
+    "marca": "Leonard",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Acústica Parquer Ga105 Para Diestros Negra Mate",
+    "condition": "new",
+    "thumbnail_id": "769682-MLA45668925243_042021",
+    "order_backend": 14,
+    "price": 98580,
+    "sold_quantity": 1,
+    "available_quantity": 1,
+    "marca": "Parquer",
+    "sound": "Acústica"
+    },
+    {
+    "title": "Guitarra Criolla Clásica Fonseca 31 Para Diestros",
+    "thumbnail_id": "667411-MLA46554720224_062021",
+    "order_backend": 40,
+    "price": 94500,
+    "sold_quantity": 5,
+    "available_quantity": 2,
+    "marca": "Fonseca",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Eléctrica Femmto Stratocaster Eg001 De Aliso 2020 Blanca Brillante Con Diapasón De Mdf",
+    "thumbnail_id": "967968-MLA46346030580_062021",
+    "order_backend": 5,
+    "price": 85163,
+    "sold_quantity": 25,
+    "available_quantity": 5,
+    "marca": "Femmto",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Criolla Femmto Ag003 Para Diestros Azul Arce Brillante",
+    "thumbnail_id": "683434-MLA51258901443_082022",
+    "order_backend": 7,
+    "price": 61099,
+    "sold_quantity": 50,
+    "available_quantity": 25,
+    "marca": "Femmto",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Eléctrica Leonard Le362 Stratocaster De Aliso White Con Diapasón De Palo De Rosa",
+    "thumbnail_id": "799560-MLA46350548581_062021",
+    "order_backend": 10,
+    "price": 127881.3,
+    "sold_quantity": 0,
+    "available_quantity": 1,
+    "marca": "Leonard",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Acústica Parquer Custom Gac109mc Para Diestros Negra Laca",
+    "thumbnail_id": "811155-MLA52535443968_112022",
+    "order_backend": 12,
+    "price": 119268,
+    "sold_quantity": 5,
+    "available_quantity": 10,
+    "marca": "Parquer",
+    "sound": "Acústica"
+    },
+    {
+    "title": "Guitarra Acústica De Estudio Cg100 Sunburts + Funda",
+    "thumbnail_id": "611097-MLA52445228422_112022",
+    "order_backend": 29,
+    "price": 30711.67,
+    "sold_quantity": 250,
+    "available_quantity": 20,
+    "marca": "CG100",
+    "sound": "Acústica"
+    },
+    {
+    "title": "Guitarra Acustica La Alpujarra 85kec Jac Fishman",
+    "thumbnail_id": "932770-MLA46274772798_062021",
+    "order_backend": 17,
+    "price": 645973,
+    "sold_quantity": 3,
+    "available_quantity": 8,
+    "marca": "Alpujarra",
+    "sound": "Acústica"
+    },
+    {
+    "title": "Guitarra Eléctrica Newen Tl Newen De Lenga Madera Natural Laca Poliuretánica Con Diapasón De Palo De Rosa",
+    "thumbnail_id": "812248-MLA51714111463_092022",
+    "order_backend": 8,
+    "price": 117206.65,
+    "sold_quantity": 25,
+    "available_quantity": 5,
+    "marca": "Newen",
+    "sound": "Eléctrica"
+    },
+    {
+    "title": "Guitarra Criolla Femmto Ag003 Para Diestros Natural Arce Brillante",
+    "thumbnail_id": "927575-MLA51258912568_082022",
+    "order_backend": 4,
+    "price": 69999,
+    "sold_quantity": 50,
+    "available_quantity": 50,
+    "marca": "Femmto",
+    "sound": "Clásica"
+    },
+    {
+    "title": "Guitarra Acústica Cort Standard Af510 Para Diestros Open Pore Merbau",
+    "thumbnail_id": "983077-MLA43784374543_102020",
+    "order_backend": 13,
+    "price": 148621.06,
+    "sold_quantity": 2,
+    "available_quantity": 1,
+    "marca": "Cort",
+    "sound": "Acústica"
+    }
+]
