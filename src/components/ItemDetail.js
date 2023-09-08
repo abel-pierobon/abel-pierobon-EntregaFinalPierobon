@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ItemCount from './ItemCount';
 import { Link, NavLink } from "react-router-dom";
 import { CartContext } from "./CartContext.js";
 
 function ItemDetail({ producto }) {
     const { agregarAlCarrito } = useContext(CartContext);
+    const [cantidad,setCantidad]= useState(0)
     const onAdd = (cantidadSeleccionada) => {
         // Llama a la función agregarAlCarrito del contexto para agregar el producto al carrito
         agregarAlCarrito(producto, cantidadSeleccionada);
+        setCantidad(cantidadSeleccionada)
     };
     return (
         <>
@@ -22,7 +24,11 @@ function ItemDetail({ producto }) {
                 <p className='font-semibold'>Formas de pago</p>
                 <p >Precio <b>${producto.price}</b></p>
                 <ItemCount stock={producto.available_quantity} cantidad={0} onAdd={onAdd} />
-            <NavLink to={"/cart"} className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' > Ver Carrito </NavLink>
+                {cantidad === 0 ? (
+                <p className='hidden'></p>
+            ) : (
+                <NavLink to={"/cart"} className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' > Ver Carrito </NavLink>
+            )}
             </div>
             <Link to={"/"} className='flex justify-center bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1'> Volver al Catalogo</Link>
         </article>

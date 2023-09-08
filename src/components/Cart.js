@@ -3,12 +3,15 @@ import { CartContext } from './CartContext';
 
 function Cart() {
     // Accede al contexto del carrito
-    const { cart, eliminarDelCarrito } = useContext(CartContext);
+    const { cart, eliminarDelCarrito,vaciarCarrito } = useContext(CartContext);
 
     return (
-        <div >
+
+        <section className='flex'>
             <h2 className='flex justify-center font-bold'>Carrito de compras:</h2>
-            <ul className='flex-col justify-center w-30'>
+        <div>
+            
+            <ul className='flex-col justify-center'>
                 {cart.map((item) => (
                     <li key={item.id} className='flex justify-center border '>
                         <article className="grid sm:grid-cols-1 md:grid-cols-5 gap-2 border border-black card shadow-md p-4 rounded-md w-65"> 
@@ -35,8 +38,9 @@ function Cart() {
                     </li>
                 ))}
             </ul>
-
         </div>
+        <button onClick={() => vaciarCarrito()} className=''>Vaciar todo el carrito</button>
+        </section>
     );
 }
 

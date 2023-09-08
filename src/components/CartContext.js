@@ -29,13 +29,13 @@ function CartContextProvider(props) {
         const eliminar = cart.filter((item) => item.id !== itemId);
         setCart(eliminar);
     }; 
-    // const vaciarCarrito = () =>{
-    //     setCart(0);
-    // }
+    const vaciarCarrito = () =>{
+        setCart([]);
+    }
 
 
     return (
-        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito }}>
+        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito,vaciarCarrito }}>
             {props.children}
         </Provider>
     );

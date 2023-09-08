@@ -36,7 +36,12 @@ function ItemCount(props) {
                 <p className='border border-black rounded px-6 cantidad m-1'>{cantidadSeleccionada}</p>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
-            <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' onClick={agregar}>Agregar al carrito</button>
+            {stock === 0 ? (
+                <p className='flex justify-center text-red-500 font-bold'> Lo sentimos...No hay stock disponible de este producto</p>
+            ) : (
+                <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' onClick={agregar}>Agregar al carrito</button>
+
+            )}
         </div>
     )
 }
