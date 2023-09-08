@@ -20,9 +20,7 @@ function Item({ articulo }) {
                 <h2 className="font-font-semibold">Estilo: {articulo.sound}</h2>
                 <p className="font-font-semibold"> Precio: <b>${articulo.price}</b></p>
                 {articulo.available_quantity > 0 ? (
-                <p className=" flex justify-center font-bold font-mono ">
-                    PRODUCTO EN STOCK
-                </p>
+                <p className=" flex justify-center font-bold font-mono ">PRODUCTO EN STOCK</p>
             ) : (
                 <p className='flex justify-center text-red-500 font-bold'> SIN STOCK</p>
             )}
