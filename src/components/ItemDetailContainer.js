@@ -18,13 +18,14 @@ function ItemDetailContainer() {
         const consulta = getDoc(referenciaDelDocumento);
         
         consulta
-            .then((resultado) =>{
-                setProducto(resultado.data())
+            .then((resultado) => {
+                const articulo = resultado.data()
+                articulo.id =resultado.id
+                setProducto(articulo)
             })
             .catch((error) =>{
                 console.log(error)
             })
-            
     }, [id]);
     return (
         <>

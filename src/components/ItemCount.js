@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ItemCount(props) {
     const stockDisponible = props.stock;
@@ -8,22 +8,27 @@ function ItemCount(props) {
     const sumarClick = () => {
         if (stock > 0) {
             setCantidadSeleccionada(cantidadSeleccionada + 1);
-            setStock(stock - 1);
+            setStock((stockprevio) => stockprevio - 1);
         }
     };
 
     const restarClick = () => {
         if (cantidadSeleccionada > 0) {
             setCantidadSeleccionada(cantidadSeleccionada - 1);
-            setStock(stock + 1);
+            setStock((stockprevio) => stockprevio + 1);
         }
     };
 
     const agregar = () => {
-        props.onAdd(cantidadSeleccionada,stock);
+        props.onAdd(cantidadSeleccionada, stock);
     };
 
-        return (
+    // Utiliza useEffect para asegurarte de que el valor de stock se actualice correctamente.
+    useEffect(() => {
+        setStock(stockDisponible);
+    }, [stockDisponible]);
+
+    return (
         <div className='flex flex-col items-start '>
             <p key={props.i} className='h-8'>  Stock Disponible: <b> {stock} </b></p>
             <div className='flex justify-content=start'>
@@ -33,7 +38,7 @@ function ItemCount(props) {
             </div>
             <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' onClick={agregar}>Agregar al carrito</button>
         </div>
-        )
-    }
+    )
+}
 
-    export default ItemCount
+export default ItemCount;
