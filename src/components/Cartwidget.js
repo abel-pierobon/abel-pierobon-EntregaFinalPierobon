@@ -11,7 +11,6 @@ const CartWidget = () => {
             ) : (
                 <span className="bg-red-600 font-semibold rounded-full flex justify-center z-40 span">{totalProductos}</span>
             )}
-            {/* <span className="bg-red-600 font-semibold rounded-full flex justify-center span">{totalProductos}</span> */}
             <Link to={"/cart"} className="material-icons cartWidget" > shopping_cart </Link>
             
         </div>

@@ -10,6 +10,7 @@ function Main() {
             <Routes>
                 <Route path="/" element={<ItemListContainer greeting="Bienvenidos a nuestra tienda Online"/>} />
                 <Route path="/cat/:id" element={<ItemListContainer/>} />
+                <Route path="orden/:id" element={<ItemListContainer/>}/>
                 <Route path="/cart"element={<Cart/>}/>
                 <Route path="/prod/:id" element={<ItemDetailContainer/>} />
             </Routes>

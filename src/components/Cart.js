@@ -4,7 +4,7 @@ import { NavLink,Link } from 'react-router-dom';
 
 function Cart() {
     // Accede al contexto del carrito
-    const { cart, eliminarDelCarrito,vaciarCarrito } = useContext(CartContext);
+    const { cart, eliminarDelCarrito,vaciarCarrito,volverStock } = useContext(CartContext);
 
     return (
         <div className='flex flex-col'>
@@ -19,30 +19,36 @@ function Cart() {
                                         <img className="w-20"src={`https://http2.mlstatic.com/D_604790-${item.thumbnail_id}-V.webp`}alt={item.thumbnail_id}/>
                                         <h3>{item.title.split(' ').slice(0, 3).join(' ')}</h3>
                                     </div>
+                                    
                                     <div className='flex flex-col justify-items-start '>
                                         <p >Cantidad </p>
                                         <p>{item.quantity}</p>
-                                    </div>
-                                    <div className='flex flex-col '>
-                                        <p >Precio unitario </p>
-                                        <p>${item.price}</p>
                                     </div>
                                     <div className='flex flex-col'>
                                         <p >Subtotal: </p>
                                         <p>${item.price * item.quantity}</p>
                                     </div>
-                                    <button onClick={() => eliminarDelCarrito(item.id)} className='material-icons'>
-                                            delete
-                                    </button>
-                                    <NavLink to={`/prod/${item.id}`}className="bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1 flex justify-center">
-                                        Ver producto
-                                    </NavLink>
+                                    <div className='flex flex-col content-center'>
+                                        <NavLink to={`/prod/${item.id}`}className="bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1 flex justify-center">
+                                            Ver producto
+                                        </NavLink>
+                                        <button onClick={() => {
+                                                eliminarDelCarrito(item.id);
+                                                volverStock(item.quantity, item.id); // Llama a volverStock con los argumentos necesarios
+                                                }} className='material-icons text-red-700'>
+                                                delete 
+                                        </button>
+                                    </div>
+                                    
+                                    
                                 </article>
                             </li>
                         ))}
                     </ul>
                 </section>
-                <button onClick={() => vaciarCarrito()} className='flex justify-center bg-red-500 hover:text-slate-100  font-semibold border border-black rounded m-1 p-1 h-10'>Vaciar todo el carrito</button>
+                <button onClick={() => {vaciarCarrito(); cart.forEach((item) => {volverStock(item.quantity, item.id);});}} className='flex justify-center bg-red-500 hover:text-slate-100 font-semibold border border-black rounded m-1 p-1 h-10'>
+                    Vaciar todo el carrito
+                </button>
                 <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100  border border-black rounded m-1 p-1 h-10'> Seguir Comprando</Link>
             </div>
         </div>

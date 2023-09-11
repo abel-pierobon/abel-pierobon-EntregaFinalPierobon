@@ -1,6 +1,9 @@
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from "../firebase";
 import React, { useState, useEffect } from 'react';
 
 function ItemCount(props) {
+    
     const stockDisponible = props.stock;
     const [stock, setStock] = useState(stockDisponible);
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0);
@@ -19,11 +22,15 @@ function ItemCount(props) {
         }
     };
 
-    const agregar = () => {
+    const agregar = async () => {
         props.onAdd(cantidadSeleccionada, stock);
+        const productoId = props.id; 
+        const stockRef = doc(db, 'productos', productoId); // Proporciona el ID del documento aquí
+        await updateDoc(stockRef, {
+            available_quantity: stock
+        });
     };
 
-    // Utiliza useEffect para asegurarte de que el valor de stock se actualice correctamente.
     useEffect(() => {
         setStock(stockDisponible);
     }, [stockDisponible]);
@@ -36,14 +43,15 @@ function ItemCount(props) {
                 <p className='border border-black rounded px-6 cantidad m-1'>{cantidadSeleccionada}</p>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
-            {stock === 0 ? (
-                <p className='flex justify-center text-red-500 font-bold'> Lo sentimos...No hay stock disponible de este producto</p>
+            {stock === -1 ? (
+                <p className='flex justify-center text-red-500 font-bold'> Lo sentimos... No hay stock disponible de este producto</p>
             ) : (
-                <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' onClick={agregar}>Agregar al carrito</button>
-
+                <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
+                onClick={agregar}>Agregar al carrito
+                </button>
             )}
         </div>
-    )
+    );
 }
 
 export default ItemCount;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import ItemList from "./ItemList";
 import { db } from "../firebase";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where} from "firebase/firestore";
 
 
 function ItemListContainer({ greeting }) {
@@ -13,10 +13,9 @@ function ItemListContainer({ greeting }) {
 
         const productosCollection = collection(db,"productos");
         
-        const filtroConsulta = id 
-            ? query (productosCollection,
-            where("sound","==",id)):
-            productosCollection;
+        const filtroConsulta = id
+        ? query(productosCollection, where("sound", "==", id))
+        : productosCollection;
 
         const consulta = getDocs(filtroConsulta);
         
