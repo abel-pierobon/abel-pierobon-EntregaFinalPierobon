@@ -8,6 +8,7 @@ function ItemCount(props) {
     const [stock, setStock] = useState(stockDisponible);
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0);
 
+    
     const sumarClick = () => {
         if (stock > 0) {
             setCantidadSeleccionada(cantidadSeleccionada + 1);
@@ -21,9 +22,9 @@ function ItemCount(props) {
             setStock((stockprevio) => stockprevio + 1);
         }
     };
-
+    
     const agregar = async () => {
-        props.onAdd(cantidadSeleccionada, stock);
+        props.onAdd(cantidadSeleccionada, stock, restarClick,sumarClick);
         const productoId = props.id; 
         const stockRef = doc(db, 'productos', productoId); // Proporciona el ID del documento aquí
         await updateDoc(stockRef, {

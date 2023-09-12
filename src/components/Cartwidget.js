@@ -5,13 +5,13 @@ const CartWidget = () => {
     const { cart } = useContext(CartContext);
     const totalProductos = cart.reduce((total, item) => total + item.quantity, 0);
     return(
-        <div className="flex flex-col">
-            {totalProductos === 0 ? (
-                <p className='hidden'></p>
+        <div className="flex">
+            {totalProductos === (0) ? (
+                <p className="ocultar"></p>
             ) : (
-                <span className="bg-red-600 font-semibold rounded-full flex justify-center z-40 span">{totalProductos}</span>
+                <span className="font-semibold font-light bg-red-600 text-slate-100 rounded-full px-1">{totalProductos}</span>
             )}
-            <Link to={"/cart"} className="material-icons cartWidget" > shopping_cart </Link>
+            <Link to={"/cart"} className="material-icons cartWidget " > shopping_cart </Link>
             
         </div>
     )

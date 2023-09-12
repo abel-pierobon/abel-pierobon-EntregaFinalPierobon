@@ -36,10 +36,10 @@ function ItemListContainer({ greeting }) {
 
 
     return (
-        <div>
+        <>
             <h2 className="flex justify-center bg-green-100 font-bold uppercase">{greeting}</h2>
             <ItemList data={data} />
-        </div>
+        </>
     );
 }
 

@@ -7,8 +7,6 @@ const { Provider } = CartContext;
 
 function CartContextProvider(props) {
     const [cart, setCart] = useState([]);
-
-
     const agregarAlCarrito = (item, quantity) => {
         const estaEnCarrito = cart.findIndex((cartItem) => cartItem.id === item.id);
 
