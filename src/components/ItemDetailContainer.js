@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from "./ItemDetail";
 import { db } from "../firebase";
 import { getDoc, doc, collection } from "firebase/firestore";
+import { toast } from "sonner";
 
 
 function ItemDetailContainer() {
@@ -17,23 +18,28 @@ function ItemDetailContainer() {
 
         const consulta = getDoc(referenciaDelDocumento);
         
-        consulta
-            .then((resultado) => {
+        toast.promise(consulta, {
+            loading: 'Cargando Producto',
+            success: (resultado) => {
                 const articulo = resultado.data()
                 articulo.id =resultado.id
                 setProducto(articulo)
-            })
-            .catch((error) =>{
-                console.log(error)
-            })
+                return 'Producto cargado';
+            },
+            error: (error) =>{
+                return error
+            },
+            });
     }, [id]);
     return (
         <>
             <div className="flex justify-center">
-                {producto ? (
-                    <ItemDetail producto={producto} />
+            {Object.keys(producto).length === 0? (
+                    <p className="flex justify-center font-bold texto-aparecer-desaparecer">
+                    CARGANDO PRODUCTO...
+                </p>
                 ) : (
-                    <p className="texto-aparecer-desaparecer">Cargando Producto...</p>
+                    <ItemDetail producto={producto} />
                 )}
             </div>
         </>

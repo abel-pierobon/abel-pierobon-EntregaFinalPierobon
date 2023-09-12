@@ -6,10 +6,10 @@ import Cart from "./Cart";
 
 function Main() {
     return (
-        <main className='p-2 grow'>
+        <main className='p-2 grow bg-stone-100'>
             <Routes>
                 <Route path="/" element={<ItemListContainer greeting="Bienvenidos a nuestra tienda Online"/>} />
-                <Route path="/cat/:id" element={<ItemListContainer/>} />
+                <Route path="/cat/:id" element={<ItemListContainer greeting="Bienvenidos a nuestra tienda Online"/>} />
                 <Route path="orden/:id" element={<ItemListContainer/>}/>
                 <Route path="/cart"element={<Cart/>}/>
                 <Route path="/prod/:id" element={<ItemDetailContainer/>} />

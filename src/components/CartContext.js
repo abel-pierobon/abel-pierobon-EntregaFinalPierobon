@@ -1,6 +1,7 @@
 import React, { useState, createContext } from 'react';
 import { doc, updateDoc,increment } from 'firebase/firestore';
 import { db } from "../firebase";
+import { toast } from 'sonner';
 
 const CartContext = createContext();
 const { Provider } = CartContext;
@@ -18,13 +19,13 @@ function CartContextProvider(props) {
         } else {
             const nuevoItem = { ...item, quantity };
             setCart([...cart, nuevoItem]);
-
         }
     };console.log(cart)
 
     const eliminarDelCarrito = (itemId)=> {
         const eliminar = cart.filter((item) => item.id !== itemId);
         setCart(eliminar);
+        toast.success("producto eliminado del carrito")
     }
     const volverStock = async (cantidadSeleccionada, productoId) => {
         try {
@@ -37,6 +38,7 @@ function CartContextProvider(props) {
     };
     const vaciarCarrito = () =>{
         setCart([]);
+        toast.success("Carrito eliminado")
     }
 
 

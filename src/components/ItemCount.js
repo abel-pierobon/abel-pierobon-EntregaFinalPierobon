@@ -1,6 +1,7 @@
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from "../firebase";
 import React, { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 function ItemCount(props) {
     
@@ -24,9 +25,10 @@ function ItemCount(props) {
     };
     
     const agregar = async () => {
-        props.onAdd(cantidadSeleccionada, stock, restarClick,sumarClick);
+        props.onAdd(cantidadSeleccionada, stock);
         const productoId = props.id; 
-        const stockRef = doc(db, 'productos', productoId); // Proporciona el ID del documento aquí
+        const stockRef = doc(db, 'productos', productoId);
+        toast.success("producto agregado al carrito")
         await updateDoc(stockRef, {
             available_quantity: stock
         });
@@ -44,12 +46,15 @@ function ItemCount(props) {
                 <p className='border border-black rounded px-6 cantidad m-1'>{cantidadSeleccionada}</p>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
-            {stock === -1 ? (
-                <p className='flex justify-center text-red-500 font-bold'> Lo sentimos... No hay stock disponible de este producto</p>
-            ) : (
-                <button className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
-                onClick={agregar}>Agregar al carrito
+            {stock >= 1 || cantidadSeleccionada >= 1 ? (
+                <button className='mb-8 mt-8 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
+                        onClick={agregar}>
+                    Agregar al carrito
                 </button>
+            ) : (
+                <p className='flex justify-center text-red-500 font-bold'>
+                    Lo sentimos... No hay stock disponible de este producto
+                </p>
             )}
         </div>
     );

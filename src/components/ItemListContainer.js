@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemList from "./ItemList";
 import { db } from "../firebase";
 import { getDocs, collection, query, where} from "firebase/firestore";
-
+import { toast } from 'sonner'
 
 function ItemListContainer({ greeting }) {
     const [data, setData] = useState([]);
@@ -18,26 +18,28 @@ function ItemListContainer({ greeting }) {
         : productosCollection;
 
         const consulta = getDocs(filtroConsulta);
-        
-        consulta
-            .then((resultado) =>{
+
+            toast.promise(consulta, {
+            loading: 'Cargando Productos',
+            success: (resultado) => {
                 const aux = resultado.docs.map((doc) =>{
                     const producto = doc.data()
                     producto.id= doc.id
                     return producto
                 })
                 setData(aux)
-            })
-            .catch((error) =>{
-                console.log(error)
-            })
-            
+                return 'Productos cargados correctamente';
+            },
+            error: (error) =>{
+                return error
+            },
+            });
     }, [id]);
 
 
     return (
         <>
-            <h2 className="flex justify-center bg-green-100 font-bold uppercase">{greeting}</h2>
+            <h2 className="flex justify-center bg-stone-100 font-bold uppercase mb-4">{greeting}</h2>
             <ItemList data={data} />
         </>
     );
