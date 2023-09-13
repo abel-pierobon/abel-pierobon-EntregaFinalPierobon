@@ -18,13 +18,15 @@ function Item({ articulo }) {
                 </h2>
                 <h2 className="font-font-semibold">Marca: {articulo.marca}</h2>
                 <h2 className="font-font-semibold">Estilo: {articulo.sound}</h2>
-                <p className="font-font-semibold">Precio: <b>${articulo.price}</b></p>
+                <p className="font-font-semibold">Precio: <b>$ {articulo.price}</b></p>
                 {articulo.available_quantity === 0 ? (
                     <p className='flex justify-center text-red-500 font-bold'>SIN STOCK</p>
                 ) : articulo.available_quantity === 1 ? (
-                    <p className='flex justify-center text-red-500 font-bold'>ULTIMA UNIDAD</p>
+                    <p className='flex justify-center text-red-500 font-bold'>ÚLTIMA UNIDAD</p>
+                ) : articulo.available_quantity > 1 && articulo.available_quantity < 3 ? (
+                    <p className='flex justify-center text-green-600 font-bold'>ÚLTIMAS UNIDADES</p>
                 ) : (
-                    <p className="flex justify-center font-bold font-mono">PRODUCTO EN STOCK</p>
+                    <p className="flex justify-center font-bold">PRODUCTO EN STOCK</p>
                 )}
                 <NavLink to={`/prod/${articulo.id}`} className="bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1 flex justify-center">
                     Ver producto
