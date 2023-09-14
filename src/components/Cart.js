@@ -5,11 +5,8 @@ import { db } from '../firebase';
 import { collection,addDoc,serverTimestamp } from 'firebase/firestore';
 import DetailPayment from './DetailPayment';
 
-
-
-
 function Cart() {
-    const { cart, eliminarDelCarrito, vaciarCarrito, volverStock } = useContext(CartContext);
+    const { cart, eliminarDelCarrito, vaciarCarrito, volverStock,sumarCart,restarCart } = useContext(CartContext);
     const [token,setToken] = useState("")
     const [clase,setClase] = useState("ocultar")
     const [formData, setFormData] = useState({
@@ -96,8 +93,9 @@ function Cart() {
                                 <div >
                                     <p className='font-bold flex justify-center'>CANTIDAD</p>
                                     <div className='flex justify-center '>
+                                        <button className="material-icons font-semibold border border-black rounded m-1" onClick={() => restarCart(item.id)}>expand_more</button>
                                         <p className='flex justify-center mx-4 border border-black rounded px-4 cantidad m-1'>{item.quantity}</p>
-                                        <NavLink to={`/prod/${item.id}`} className=" bg-green-500 hover:text-slate-100 border border-black font-semibold rounded px-4 h-6 m-1">Añadir</NavLink>
+                                        <button className="material-icons font-semibold border border-black rounded m-1" onClick={() => sumarCart(item.id)}>expand_less</button>                   
                                     </div>
                                 </div>
                                 <div>
@@ -106,13 +104,16 @@ function Cart() {
                                 </div>
                                 <div>
                                     <p className='font-bold flex justify-center'>Eliminar del carrito</p>
-                                    <div className='flex justify-center'>
-                                        <button onClick={() => {
-                                            eliminarDelCarrito(item.id);
-                                            volverStock(item.quantity, item.id);
-                                            }} className='material-icons text-red-700 '>
-                                            delete
-                                        </button>
+                                    <div className='flex '>
+                                        <div className='flex justify-center'>
+                                            <button onClick={() => {
+                                                eliminarDelCarrito(item.id);
+                                                volverStock(item.quantity, item.id);
+                                                }} className='material-icons text-red-700 '>
+                                                delete
+                                            </button>
+                                        </div>
+                                        <NavLink to={`/prod/${item.id}`} className=" bg-green-500 hover:text-slate-100 border border-black font-semibold rounded px-4 h-6 m-1">Detalle producto</NavLink>
                                     </div>
                                 </div>
                                 

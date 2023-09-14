@@ -53,7 +53,7 @@ function ItemCount(props) {
                     Agregar al carrito
                 </button>
             ) : (
-                <p className='flex justify-center text-red-500 font-bold'>
+                <p className='flex justify-center text-red-500 font-bold m-5'>
                     Lo sentimos... No hay stock disponible de este producto
                 </p>
             )}

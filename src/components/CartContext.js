@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import { doc, updateDoc,increment } from 'firebase/firestore';
+import { doc, updateDoc,increment,getDoc } from 'firebase/firestore';
 import { db } from "../firebase";
 import { toast } from 'sonner';
 
@@ -36,6 +36,66 @@ function CartContextProvider(props) {
         } catch (error) {
         }
     };
+    const sumarCart = async (itemId) => {
+        const itemIndex = cart.findIndex((item) => item.id === itemId);
+    
+        if (itemIndex !== -1) {
+            const item = cart[itemIndex];
+            const stockRef = doc(db, 'productos', itemId);
+            const stockDoc = await getDoc(stockRef);
+    
+            if (stockDoc.exists()) {
+                const stockDisponible = stockDoc.data().available_quantity;
+    
+                if (item.quantity + 1 <= stockDisponible) {
+                    // Actualizar la cantidad en el carrito local
+                    const nuevoCarrito = [...cart];
+                    nuevoCarrito[itemIndex].quantity += 1;
+                    setCart(nuevoCarrito);
+    
+                    // Actualizar la cantidad en la base de datos
+                    await updateDoc(stockRef, {
+                        available_quantity: increment(-1)
+                    });
+                } else {
+                    // El stock no es suficiente
+                    console.log("No hay suficiente stock disponible.");
+                }
+            } else {
+                // El documento no existe en Firestore
+                console.log("El documento del producto no existe.");
+            }
+        }
+    };
+    const restarCart = async (itemId) => {
+        const itemIndex = cart.findIndex((item) => item.id === itemId);
+    
+        if (itemIndex !== -1) {
+            const item = cart[itemIndex];
+            const stockRef = doc(db, 'productos', itemId);
+    
+            if (item.quantity > 1) {
+                // Actualizar la cantidad en el carrito local
+                const nuevoCarrito = [...cart];
+                nuevoCarrito[itemIndex].quantity -= 1;
+                setCart(nuevoCarrito);
+    
+                // Actualizar la cantidad en la base de datos
+                await updateDoc(stockRef, {
+                    available_quantity: increment(1)
+                });
+            } else {
+                // Si la cantidad en el carrito es 1, elimina el artículo del carrito
+                const nuevoCarrito = cart.filter((cartItem) => cartItem.id !== itemId);
+                setCart(nuevoCarrito);
+    
+                // Devolver una unidad al stock
+                await updateDoc(stockRef, {
+                    available_quantity: increment(1)
+                });
+            }
+        }
+    };
     const vaciarCarrito = () =>{
         setCart([]);
         toast.success("Carrito eliminado")
@@ -43,7 +103,7 @@ function CartContextProvider(props) {
 
 
     return (
-        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito,vaciarCarrito, volverStock }}>
+        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito,vaciarCarrito, volverStock,sumarCart,restarCart }}>
             {props.children}
         </Provider>
     );
