@@ -32,6 +32,7 @@ function ItemCount(props) {
         await updateDoc(stockRef, {
             available_quantity: stock
         });
+        setCantidadSeleccionada(0)
     };
 
     useEffect(() => {

@@ -14,8 +14,9 @@ function ItemListContainer({ greeting }) {
         const productosCollection = collection(db,"productos");
         
         const filtroConsulta = id
-        ? query(productosCollection, where("sound", "==", id,))
+        ? query(productosCollection, where("sound", "==", id))
         : productosCollection;
+        
         
         const consulta = getDocs(filtroConsulta);
 
@@ -35,7 +36,7 @@ function ItemListContainer({ greeting }) {
             },
             });
     }, [id]);
-
+    
 
     return (
         <>

@@ -3,6 +3,7 @@ import { CartContext } from './CartContext';
 import { NavLink, Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection,addDoc,serverTimestamp } from 'firebase/firestore';
+import DetailPayment from './DetailPayment';
 
 
 
@@ -10,6 +11,7 @@ import { collection,addDoc,serverTimestamp } from 'firebase/firestore';
 function Cart() {
     const { cart, eliminarDelCarrito, vaciarCarrito, volverStock } = useContext(CartContext);
     const [token,setToken] = useState("")
+    const [clase,setClase] = useState("ocultar")
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
@@ -55,7 +57,10 @@ function Cart() {
                 console.log("Dio mal")
             })
     };
-    
+    const cambiarClase = () => {
+        const nuevaClase = clase === 'ocultar' ? 'detalle' : 'ocultar';
+        setClase(nuevaClase);
+    };
 
     
     const handleInputChange = (e) => {
@@ -69,7 +74,7 @@ function Cart() {
         <div> 
             {cart.length === 0 ? (
                 <div className='flex flex-col'>
-                    <h2 className='flex justify-center font-black text-2xl texto-aparecer-desaparecer'> No hay productos en el carrito..</h2>
+                    <h2 className='flex justify-center font-black text-2xl h-16 mt-4 texto-aparecer-desaparecer'> No hay productos en el carrito..</h2>
                     <div className='flex justify-center'>
                         <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
                     </div>
@@ -199,11 +204,11 @@ function Cart() {
                                 onChange={handleInputChange} 
                                 />
                             </div>
-                            <div className="mb-4">
-                                <Link onClick={() => { laVenta(); vaciarCarrito(); }} 
-                                    className="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            <div className="mb-4 flex justify-center">
+                                <Link onClick={() => { laVenta(); vaciarCarrito(); cambiarClase() }} 
+                                    className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
-                                    FINALIZAR COMPRA
+                                    Realizar Pedido
                                 </Link>
                             </div>
                         </form>                     
@@ -211,7 +216,9 @@ function Cart() {
                         </section>
                 </div>
             )}
-            <p>Su token de compra es:  {token}</p>
+            <div className={clase}>
+                <DetailPayment token={token}/>
+            </div>
         </div>
     );   
 }

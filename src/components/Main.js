@@ -3,7 +3,7 @@ import React from 'react'
 import ItemListContainer from './ItemListContainer'
 import ItemDetailContainer from './ItemDetailContainer'
 import Cart from "./Cart";
-import DetailPayment from "./DetailPayment";
+
 
 function Main() {
     return (
@@ -13,7 +13,6 @@ function Main() {
                 <Route path="/cat/:id" element={<ItemListContainer greeting="Bienvenidos a nuestra tienda Online"/>} />
                 <Route path="/cart"element={<Cart/>}/>
                 <Route path="/prod/:id" element={<ItemDetailContainer/>} />
-                <Route path="/detalle/:id" element={<DetailPayment/>} />
             </Routes>
         </main>
     )
