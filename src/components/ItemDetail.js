@@ -15,7 +15,9 @@ function ItemDetail({ producto }) {
     return (
         <>
         <article className="grid sm:grid-cols-1 md:grid-cols-3 border border-black card shadow-md p-2 w-1/2">
-            <img className='w-64 flex justify-center' src={`https://http2.mlstatic.com/D_604790-${producto.thumbnail_id}-V.webp`} alt={producto.thumbnail_id} />
+            <div className='flex justify-center'>
+                <img className='w-64 object-fill' src={`https://http2.mlstatic.com/D_604790-${producto.thumbnail_id}-V.webp`} alt={producto.thumbnail_id} />
+            </div>
             <div className=' mx-8'>
                 <h2 className="text-start font-bold">{producto.title}</h2>
                 <h2>Marca: {producto.marca}</h2>

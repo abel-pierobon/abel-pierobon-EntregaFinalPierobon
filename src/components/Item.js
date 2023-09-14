@@ -22,9 +22,9 @@ function Item({ articulo }) {
                 {articulo.available_quantity === 0 ? (
                     <p className='flex justify-center text-red-500 font-bold'>SIN STOCK</p>
                 ) : articulo.available_quantity === 1 ? (
-                    <p className='flex justify-center text-red-500 font-bold'>ÚLTIMA UNIDAD</p>
+                    <p className='flex justify-center text-red-500 font-bold ultima-aparecer-desaparecer'>ÚLTIMA UNIDAD</p>
                 ) : articulo.available_quantity > 1 && articulo.available_quantity < 3 ? (
-                    <p className='flex justify-center text-green-600 font-bold'>ÚLTIMAS UNIDADES</p>
+                    <p className='flex justify-center text-red-500 font-bold'>ÚLTIMAS UNIDADES</p>
                 ) : (
                     <p className="flex justify-center font-bold">PRODUCTO EN STOCK</p>
                 )}

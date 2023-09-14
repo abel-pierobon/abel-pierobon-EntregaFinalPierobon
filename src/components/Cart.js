@@ -1,25 +1,81 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
 import { NavLink, Link } from 'react-router-dom';
+import { db } from '../firebase';
+import { collection,addDoc,serverTimestamp } from 'firebase/firestore';
+
 
 
 
 function Cart() {
     const { cart, eliminarDelCarrito, vaciarCarrito, volverStock } = useContext(CartContext);
+    const [token,setToken] = useState("")
+    const [formData, setFormData] = useState({
+        nombre: '',
+        apellido: '',
+        dni: '',
+        email: '',
+        dirección: '',
+    });
+
     const total = cart.reduce((accumulator, item) => {
         return accumulator + item.price * item.quantity;
-    }, 0);
+    }, 0); 
+    const laVenta =  () => {
+        const total = cart.reduce((accumulator, item) => {
+            return accumulator + item.price * item.quantity;
+        }, 0); 
+        
+        const ventasCollection = collection(db, 'ventas');
+        const venta = {
+            cliente: {
+                nombre: formData.nombre,
+                apellido: formData.apellido,
+                dni: formData.dni,
+                email: formData.email,
+                dirección: formData.dirección,
+            },
+            fecha: serverTimestamp(),
+            productos: cart.map((item) => ({
+                id: item.id,
+                cantidad: item.quantity,
+                price: item.price,
+            })),
+            total: total,
+        };
+            const pedido = addDoc(ventasCollection, venta);
+            pedido
+            .then((resultado) => {
+                console.log("Se guardo la venta")
+                console.log(resultado)
+                setToken(resultado.id)
+            })
+            .catch((error) => {
+                console.log(error)
+                console.log("Dio mal")
+            })
+    };
+    
+
+    
+    const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+        ...formData,
+        [name]: value,
+    });
+    };
     return (
         <div> 
             {cart.length === 0 ? (
                 <div className='flex flex-col'>
                     <h2 className='flex justify-center font-black text-2xl texto-aparecer-desaparecer'> No hay productos en el carrito..</h2>
                     <div className='flex justify-center'>
-                        <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Cátalogo</Link>
+                        <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
                     </div>
                 </div>
                 ) : (
-                    <div className='flex justify-content'>
+                <div className='flex justify-center'>
                     <section className="rounded-md">
                             <h2 className='flex justify-center font-black text-2xl'>Total a pagar: ${total}</h2>
                             {cart.map((item) => (
@@ -45,12 +101,14 @@ function Cart() {
                                 </div>
                                 <div>
                                     <p className='font-bold flex justify-center'>Eliminar del carrito</p>
-                                    <button onClick={() => {
-                                        eliminarDelCarrito(item.id);
-                                        volverStock(item.quantity, item.id);
-                                        }} className='material-icons text-red-700 '>
-                                        delete
-                                    </button>
+                                    <div className='flex justify-center'>
+                                        <button onClick={() => {
+                                            eliminarDelCarrito(item.id);
+                                            volverStock(item.quantity, item.id);
+                                            }} className='material-icons text-red-700 '>
+                                            delete
+                                        </button>
+                                    </div>
                                 </div>
                                 
                             </section>
@@ -66,49 +124,54 @@ function Cart() {
                                     Vaciar todo el carrito
                                 </button>
                             </div>
-                        </section>
+                    </section>
                         <section>
                             <h2 className='flex justify-center text-2xl'>Completa el formulario para finalizar la compra</h2>
                         <div className='border border-black rounded w-3/3 bg-green-100'>
                         <form className="max-w-md mx-auto my-8 ">
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
                                 Nombre
                                 </label>
                                 <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="nombre"
                                 type="text"
                                 placeholder="Ingresa tu nombre"
+                                name="nombre" 
+                                value={formData.nombre}  
+                                onChange={handleInputChange}  
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="apellido">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
                                 Apellido
                                 </label>
                                 <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="apellido"
                                 type="text"
                                 placeholder="Ingresa tu apellido"
+                                name="apellido" 
+                                value={formData.apellido}  
+                                onChange={handleInputChange} 
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dni">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
                                 DNI
                                 </label>
                                 <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="dni"
                                 type="number"
                                 placeholder="Ingresa tu DNI"
+                                name="dni" 
+                                value={formData.dni}  
+                                onChange={handleInputChange} 
                                 />
                             </div>
-
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
                                 Correo Electrónico
                                 </label>
                                 <input
@@ -116,39 +179,41 @@ function Cart() {
                                 id="email"
                                 type="email"
                                 placeholder="Ingresa tu correo electrónico"
+                                name="email" 
+                                value={formData.email}  
+                                onChange={handleInputChange} 
                                 />
                                 <p className="text-gray-600 text-xs italic">Nunca compartiremos tu correo electrónico con nadie más.</p>
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="direccion">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">
                                 Dirección
                                 </label>
                                 <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="direccion"
                                 type="text"
                                 placeholder="Ingresa tu dirección"
+                                name="dirección" 
+                                value={formData.dirección}  
+                                onChange={handleInputChange} 
                                 />
                             </div>
-
                             <div className="mb-4">
-                                <button
-                                className="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="submit"
+                                <Link onClick={() => { laVenta(); vaciarCarrito(); }} 
+                                    className="bg-green-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
-                                FINALIZAR COMPRA
-                                </button>
+                                    FINALIZAR COMPRA
+                                </Link>
                             </div>
-                        </form>
-                        
+                        </form>                     
                     </div>
-                    </section>
+                        </section>
                 </div>
             )}
+            <p>Su token de compra es:  {token}</p>
         </div>
-    );
-    
+    );   
 }
 
 export default Cart;
