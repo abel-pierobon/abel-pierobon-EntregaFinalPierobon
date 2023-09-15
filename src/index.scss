@@ -11,12 +11,6 @@ html , body , #root {
     display: flex;
     flex-direction: column;
 }
-body{
-    // background-image: url('./components/fondoGuitarra.png');
-    background-size: cover; 
-    background-attachment: fixed;
-    opacity:inherit;
-}
 .imagenProducto{
     width: 100%;
     height: 100%;

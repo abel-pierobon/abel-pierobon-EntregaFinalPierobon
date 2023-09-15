@@ -20,10 +20,8 @@ function ItemListContainer({ greeting }) {
         } else if (id === "desc") {
             filtroConsulta = query(productosCollection, orderBy("price", "desc"));
         }  else if (id === "masvendidos") {
-            filtroConsulta = query(productosCollection, orderBy("order_backend", "desc"),limit(6));
+            filtroConsulta = query(productosCollection, orderBy("sold_quantity", "desc"),limit(6));
         }else if (id) {
-            filtroConsulta = query(productosCollection, where("sound", "==", id));
-        } else if (id) {
             filtroConsulta = query(productosCollection, where("sound", "==", id));
         } else {
             filtroConsulta = productosCollection;
@@ -43,7 +41,7 @@ function ItemListContainer({ greeting }) {
                 return 'Productos cargados correctamente';
             },
             error: (error) => {
-                return error
+                return "error en carga de productos"
             },
         });
     }, [id]);

@@ -27,7 +27,7 @@ function ItemDetailContainer() {
                 return 'Producto cargado';
             },
             error: (error) =>{
-                return error
+                return "error en carga de producto"
             },
             });
     }, [id]);

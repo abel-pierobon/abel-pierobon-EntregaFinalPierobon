@@ -6,7 +6,7 @@ import NavBar from "./components/navbar.js";
 import { CartContextProvider } from "./components/CartContext.js";
 import "./firebase.js"
 import { Toaster } from "sonner";
-// import "./db/migraciones.js"
+
 
 function App() {
     return (

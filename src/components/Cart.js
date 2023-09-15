@@ -17,12 +17,12 @@ function Cart() {
         dirección: '',
     });
 
-    const total = cart.reduce((accumulator, item) => {
-        return accumulator + item.price * item.quantity;
+    const total = cart.reduce((acumulador, item) => {
+        return acumulador + item.price * item.quantity;
     }, 0); 
     const laVenta =  () => {
-        const total = cart.reduce((accumulator, item) => {
-            return accumulator + item.price * item.quantity;
+        const total = cart.reduce((acumulador, item) => {
+            return acumulador + item.price * item.quantity;
         }, 0); 
         
         const ventasCollection = collection(db, 'ventas');

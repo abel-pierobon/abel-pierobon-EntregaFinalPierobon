@@ -24,11 +24,11 @@ function Item({ articulo }) {
                 ) : articulo.available_quantity === 1 ? (
                     <p className='flex justify-center text-red-500 font-black ultima-aparecer-desaparecer'>ÚLTIMA UNIDAD</p>
                 ) : articulo.available_quantity > 1 && articulo.available_quantity < 3 ? (
-                    <p className='flex justify-center text-red-500 font-black'>ÚLTIMAS UNIDADES</p>
+                    <p className='flex justify-center text-red-500 font-bold'>ÚLTIMAS UNIDADES</p>
                 ) : (
                     <p className="flex justify-center font-black">PRODUCTO EN STOCK</p>
                 )}
-                <NavLink to={`/prod/${articulo.id}`} className="bg-green-500 hover:font-black  border border-black rounded m-1 p-1 flex justify-center ">
+                <NavLink to={`/prod/${articulo.id}`} className="bg-green-500 font-bold hover:font-black border border-black rounded m-1 p-1 flex justify-center ">
                     Ver producto
                 </NavLink>
             </div>
