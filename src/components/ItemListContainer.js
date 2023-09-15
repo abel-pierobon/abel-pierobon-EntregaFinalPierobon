@@ -1,46 +1,62 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import ItemList from "./ItemList";
 import { db } from "../firebase";
-import { getDocs, collection, query, where} from "firebase/firestore";
-import { toast } from 'sonner'
+import { getDocs, collection, query, where, orderBy,limit } from "firebase/firestore";
+import { toast } from 'sonner';
+
 
 function ItemListContainer({ greeting }) {
     const [data, setData] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
+        const productosCollection = collection(db, "productos");
 
-        const productosCollection = collection(db,"productos");
-        
-        const filtroConsulta = id
-        ? query(productosCollection, where("sound", "==", id))
-        : productosCollection;
-        
-        
+        let filtroConsulta;
+
+        if (id === "asc") {
+            filtroConsulta = query(productosCollection, orderBy("price", "asc"));
+        } else if (id === "desc") {
+            filtroConsulta = query(productosCollection, orderBy("price", "desc"));
+        }  else if (id === "masvendidos") {
+            filtroConsulta = query(productosCollection, orderBy("order_backend", "desc"),limit(6));
+        }else if (id) {
+            filtroConsulta = query(productosCollection, where("sound", "==", id));
+        } else if (id) {
+            filtroConsulta = query(productosCollection, where("sound", "==", id));
+        } else {
+            filtroConsulta = productosCollection;
+        }
+
         const consulta = getDocs(filtroConsulta);
 
-            toast.promise(consulta, {
+        toast.promise(consulta, {
             loading: 'Cargando Productos',
             success: (resultado) => {
-                const aux = resultado.docs.map((doc) =>{
+                const aux = resultado.docs.map((doc) => {
                     const producto = doc.data()
-                    producto.id= doc.id
+                    producto.id = doc.id
                     return producto
                 })
                 setData(aux)
                 return 'Productos cargados correctamente';
             },
-            error: (error) =>{
+            error: (error) => {
                 return error
             },
-            });
+        });
     }, [id]);
-    
 
     return (
         <>
-            <h2 className="flex justify-center bg-stone-100 font-bold uppercase mb-4">{greeting}</h2>
+            <h2 className="flex justify-center font-black text-3xl uppercase mb-4 m-4">{greeting}</h2>
+            <div className="flex justify-center m-6">
+                <p className="font-black">Ordenar por:</p>
+                <NavLink to="/" className="hover:text-red-600 px-1 font-bold material-icons">filter_alt_off</NavLink>
+                <NavLink to="/ord/asc" className="hover:text-red-600 px-1 font-bold">Precio Menor</NavLink>
+                <NavLink to="/ord/desc" className="hover:text-red-600 px-1 font-bold">Precio Mayor</NavLink>
+            </div>
             <ItemList data={data} />
         </>
     );

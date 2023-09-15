@@ -2,10 +2,11 @@ import { NavLink } from "react-router-dom";
 
 function Links() {
     return (  
-        <div className='basis-1/4 space-x-6 text-2xl italic '>
-            <NavLink to="/cat/Eléctrica" className="hover:text-white">Eléctricas</NavLink>
-            <NavLink to="/cat/Acústica" className="hover:text-white">Acústicas</NavLink>
-            <NavLink to="/cat/Clásica" className="hover:text-white">Clásicas</NavLink>
+        <div className='space-x-4 text-2xl italic font-bold '>
+            <NavLink to="/cat/Eléctrica" className="hover:text-red-600">Eléctricas</NavLink>
+            <NavLink to="/cat/Acústica" className="hover:text-red-600">Acústicas</NavLink>
+            <NavLink to="/cat/Clásica" className="hover:text-red-600">Clásicas</NavLink>
+            <NavLink to="/ord/masvendidos" className="hover:text-red-600 px-1 font-bold">Mas vendidos</NavLink>
         </div>
     );
 }

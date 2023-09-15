@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import CartWidget from "./Cartwidget";
 import Links from "./link";
+import logo from "./logo.png"
 
 function NavBar (){
     return(
         <div className='flex justify-around bg-green-400 p-2 '>
-            <Link to={"/"}> <h1 className='basis-1/4 text-2xl italic'>Solo guitarras</h1> </Link>
+            <Link to={"/"}> <img src={logo} alt="logo de marca" className="w-10" /> </Link>
             <Links/>
             <CartWidget/>
         </div>

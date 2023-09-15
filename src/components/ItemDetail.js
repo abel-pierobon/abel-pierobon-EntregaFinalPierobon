@@ -8,7 +8,6 @@ function ItemDetail({ producto }) {
     const [cantidad,setCantidad]= useState(0)
 
     const onAdd = (cantidadSeleccionada) => {
-        // Llama a la función agregarAlCarrito del contexto para agregar el producto al carrito
         agregarAlCarrito(producto, cantidadSeleccionada);
         setCantidad(cantidadSeleccionada)
     };

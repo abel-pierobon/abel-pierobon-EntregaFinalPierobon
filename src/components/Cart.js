@@ -3,7 +3,7 @@ import { CartContext } from './CartContext';
 import { NavLink, Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection,addDoc,serverTimestamp } from 'firebase/firestore';
-import DetailPayment from './DetailPayment';
+import Brief from './Brief';
 
 function Cart() {
     const { cart, eliminarDelCarrito, vaciarCarrito, volverStock,sumarCart,restarCart } = useContext(CartContext);
@@ -45,13 +45,9 @@ function Cart() {
             const pedido = addDoc(ventasCollection, venta);
             pedido
             .then((resultado) => {
-                console.log("Se guardo la venta")
-                console.log(resultado)
                 setToken(resultado.id)
             })
             .catch((error) => {
-                console.log(error)
-                console.log("Dio mal")
             })
     };
     const cambiarClase = () => {
@@ -68,44 +64,43 @@ function Cart() {
     });
     };
     return (
-        <div> 
+        <div className='gap-2'> 
             {cart.length === 0 ? (
                 <div className='flex flex-col'>
                     <h2 className='flex justify-center font-black text-2xl h-16 mt-4 texto-aparecer-desaparecer'> No hay productos en el carrito..</h2>
                     <div className='flex justify-center'>
-                        <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
+                        <Link to={"/"} className='flex justify-center bg-green-500 font-black hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
                     </div>
                 </div>
                 ) : (
                 <div className='flex justify-center'>
-                    <section className="rounded-md">
-                            <h2 className='flex justify-center font-black text-2xl'>Total a pagar: ${total}</h2>
+                    <section className="rounded-md ">
                             {cart.map((item) => (
                             <section className='grid h-24 sm:grid-cols-1 md:grid-cols-5 border border-black rounded m-4 mt-2rem p-4' key={item.id}>
                                 <div className='text-start '>
-                                    <p className='font-bold flex justify-center'>PRODUCTO</p>
-                                    <p className='font-bold flex justify-center'>{item.marca} {item.sound}</p>
+                                    <p className='font-black flex justify-center'>PRODUCTO</p>
+                                    <p className='font-black flex justify-center'>{item.marca} {item.sound}</p>
                                 </div>
                                 <div >
-                                    <p className='font-bold flex justify-center'>PRECIO</p>
-                                    <p className='flex justify-center' >$ {item.price}</p>
+                                    <p className='font-black flex justify-center'>PRECIO</p>
+                                    <p className='flex justify-center font-black ' >$ {item.price}</p>
                                 </div>
                                 <div >
-                                    <p className='font-bold flex justify-center'>CANTIDAD</p>
-                                    <div className='flex justify-center '>
-                                        <button className="material-icons font-semibold border border-black rounded m-1" onClick={() => restarCart(item.id)}>expand_more</button>
+                                    <p className='font-black  flex justify-center'>CANTIDAD</p>
+                                    <div className='flex justify-center font-black  '>
+                                        <button className="material-icons font-black border border-black rounded m-1" onClick={() => restarCart(item.id)}>expand_more</button>
                                         <p className='flex justify-center mx-4 border border-black rounded px-4 cantidad m-1'>{item.quantity}</p>
-                                        <button className="material-icons font-semibold border border-black rounded m-1" onClick={() => sumarCart(item.id)}>expand_less</button>                   
+                                        <button className="material-icons font-black border border-black rounded m-1" onClick={() => sumarCart(item.id)}>expand_less</button>                   
                                     </div>
                                 </div>
                                 <div>
-                                    <p className='font-bold flex justify-center'>SUB TOTAL</p>
-                                    <p className='flex justify-center'>$ {item.price * item.quantity}</p>
+                                    <p className='font-black  flex justify-center'>SUB TOTAL</p>
+                                    <p className='flex justify-center font-black '>$ {item.price * item.quantity}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold flex justify-center'>Eliminar del carrito</p>
-                                    <div className='flex '>
-                                        <div className='flex justify-center'>
+                                    <div className='flex items-center'>
+                                    <NavLink to={`/prod/${item.id}`} className=" bg-green-500 hover:text-slate-100 border border-black font-bold rounded p-1 h-auto m-1">Detalle producto</NavLink>
+                                        <div className='flex justify-center font-black '>
                                             <button onClick={() => {
                                                 eliminarDelCarrito(item.id);
                                                 volverStock(item.quantity, item.id);
@@ -113,34 +108,33 @@ function Cart() {
                                                 delete
                                             </button>
                                         </div>
-                                        <NavLink to={`/prod/${item.id}`} className=" bg-green-500 hover:text-slate-100 border border-black font-semibold rounded px-4 h-6 m-1">Detalle producto</NavLink>
                                     </div>
                                 </div>
-                                
                             </section>
                             ))}
+                            <h2 className='flex justify-center font-black text-red-700 text-2xl'>Total a pagar: ${total}</h2>
                             <div className=' w-2/2 flex justify-center m-8'>
-                                <Link to={"/"} className='flex justify-center bg-green-500 font-semibold hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Seguir Comprando</Link>
+                                <Link to={"/"} className='flex justify-center bg-green-500 font-black hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Seguir Comprando</Link>
                                 <button onClick={() => {
                                     vaciarCarrito();
                                     cart.forEach((item) => {
                                         volverStock(item.quantity, item.id);
                                     });
-                                    }} className='flex justify-center bg-red-500 hover:text-slate-100 font-semibold border border-black rounded m-1 p-1 h-10'>
+                                    }} className='flex justify-center bg-red-500 hover:text-slate-100 font-black border border-black rounded m-1 p-1 h-10'>
                                     Vaciar todo el carrito
                                 </button>
                             </div>
                     </section>
-                        <section>
-                            <h2 className='flex justify-center text-2xl'>Completa el formulario para finalizar la compra</h2>
-                        <div className='border border-black rounded w-3/3 bg-green-100'>
-                        <form className="max-w-md mx-auto my-8 ">
+                        <section className='border border-black rounded p-5'>
+                        <div className=' w-3/3 '>
+                        <h2 className='flex justify-center text-2xl font-black  '>Completa el formulario para finalizar la compra</h2>
+                        <form className="max-w-md mx-auto my-8font-black  ">
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-black-900 text-sm font-black mb-2">
                                 Nombre
                                 </label>
                                 <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline"
                                 type="text"
                                 placeholder="Ingresa tu nombre"
                                 name="nombre" 
@@ -150,11 +144,11 @@ function Cart() {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-black-900 text-sm font-black  mb-2">
                                 Apellido
                                 </label>
                                 <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline"
                                 type="text"
                                 placeholder="Ingresa tu apellido"
                                 name="apellido" 
@@ -164,11 +158,11 @@ function Cart() {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-black-900 text-sm font-black  mb-2">
                                 DNI
                                 </label>
                                 <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline"
                                 type="number"
                                 placeholder="Ingresa tu DNI"
                                 name="dni" 
@@ -177,11 +171,11 @@ function Cart() {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-black-900 text-sm font-black  mb-2">
                                 Correo Electrónico
                                 </label>
                                 <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="email"
                                 placeholder="Ingresa tu correo electrónico"
@@ -193,11 +187,11 @@ function Cart() {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">
+                                <label className="block text-black-900 text-sm font-black  mb-2">
                                 Dirección
                                 </label>
                                 <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline"
                                 type="text"
                                 placeholder="Ingresa tu dirección"
                                 name="dirección" 
@@ -207,7 +201,7 @@ function Cart() {
                             </div>
                             <div className="mb-4 flex justify-center">
                                 <Link onClick={() => { laVenta(); vaciarCarrito(); cambiarClase() }} 
-                                    className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    className="bg-green-600 hover:bg-green-400 text-black font-black border border-black py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
                                     Realizar Pedido
                                 </Link>
@@ -218,7 +212,7 @@ function Cart() {
                 </div>
             )}
             <div className={clase}>
-                <DetailPayment token={token}/>
+                <Brief token={token}/>
             </div>
         </div>
     );   

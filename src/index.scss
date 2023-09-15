@@ -11,6 +11,12 @@ html , body , #root {
     display: flex;
     flex-direction: column;
 }
+body{
+    // background-image: url('./components/fondoGuitarra.png');
+    background-size: cover; 
+    background-attachment: fixed;
+    opacity:inherit;
+}
 .imagenProducto{
     width: 100%;
     height: 100%;
@@ -24,7 +30,7 @@ html , body , #root {
 }
 .active{
     font-weight: 700;
-    color: white;
+    color: #dc2626;
 }
 @keyframes aparecerDesaparecer {
     0% {
@@ -44,7 +50,7 @@ display: flex;
 justify-content: center;
 }
 .ultima-aparecer-desaparecer {
-    animation: aparecerDesaparecer 1s infinite; 
+    animation: aparecerDesaparecer 1.5s infinite; 
     display: flex;
     justify-content: center;
 }
@@ -59,5 +65,7 @@ justify-content: center;
 .cartWidget{
     font-size: 30px;
 }
+
+
 
 
