@@ -1,6 +1,6 @@
 # PROYECTO DE REACT js-CODERHOUSE-
-## APP "SOLO GUITARRAS"
 
+## APP "SOLO GUITARRAS"
 
 ### Descripción del Proyecto
 El proyecto es realizado para un e-commerce dedicado a la venta de guitarras y en el cual se pueden visualizar 18 
@@ -25,3 +25,6 @@ Luégo se debe navegar al directorio del proyecto, y ejecutar npm start.
 Además se debe instalar para las rutas react-router-dom con el siguiente comando npm install react-router-dom.
 Para los estilos el framework taelwind npm install tailwindcss.
 Para la gestión de base de datos Firebase  npm install firebase.
+
+### Live Demo
+[link] https://clipchamp.com/watch/c4az1O5La09 
