@@ -13,7 +13,7 @@ function ItemDetail({ producto }) {
     };
     return (
         <>
-        <article className="grid sm:grid-cols-1 md:grid-cols-3 border border-black card shadow-md p-2 w-1/2">
+        <article className="grid sm:grid-cols-1 md:grid-cols-3 border border-black card shadow-md p-2 w-2/2">
             <div className='flex justify-center'>
                 <img className='w-64 object-fill' src={`https://http2.mlstatic.com/D_604790-${producto.thumbnail_id}-V.webp`} alt={producto.thumbnail_id} />
             </div>
@@ -32,7 +32,7 @@ function ItemDetail({ producto }) {
                 <NavLink to={"/cart"} className='bg-green-500 hover:font-bold font-semibold border border-black rounded m-4 p-1' > Ver Carrito </NavLink>
             )}
             </div>
-            <Link to={"/"} className='flex justify-center bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1'> Volver al Catalogo</Link>
+            <Link to={"/"} className='flex justify-center bg-green-500 hover:font-bold font-semibold border border-black rounded mt-6 m-1 p-1'> Volver al Catalogo</Link>
         </article>
         </>
     );

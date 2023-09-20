@@ -26,6 +26,10 @@ html , body , #root {
     font-weight: 700;
     color: #dc2626;
 }
+.carrito{
+    display: flex;
+    justify-content: center;
+}
 @keyframes aparecerDesaparecer {
     0% {
         opacity: 0;
@@ -37,7 +41,6 @@ html , body , #root {
         opacity: 0;
     }
 }
-
 .texto-aparecer-desaparecer {
 animation: aparecerDesaparecer 2s infinite; 
 display: flex;
@@ -58,7 +61,57 @@ justify-content: center;
 }
 .cartWidget{
     font-size: 30px;
+    margin-left: 5px;
 }
+.burger{
+    display: none;
+}
+.linkas{
+    display: none;
+}
+@media screen and (max-width: 576px) {
+    .burger {
+        display: flex;
+        // flex-direction: column;
+        position: relative;
+
+    }
+
+    .linkdes {
+        display: none;
+    }
+
+    .linka {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: -100%; 
+        top: 5%;
+        bottom: 0;
+        background-color: rgb(74 222 128);
+        opacity: 90%;
+        z-index: 1;
+        transition: left 1s; 
+    }
+
+    .linka.open {
+        left: 0px; 
+        top:5%;
+        width: 20%;
+        background-color: rgb(74 222 128);
+        opacity: 90%;
+    }
+
+    .link {
+        display: flex;
+        flex-direction: column;
+        ;
+    }
+    .carrito{
+        flex-direction: column;
+    }
+}
+
 
 
 

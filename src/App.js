@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <CartContextProvider>
           <NavBar />
-          <Toaster position="top-left" expand={false} autoClose={500} duration={2000} closeOnClick= {true} richColors/>
+          <Toaster position="top-left" expand={false} autoClose={200} duration={1500} closeOnClick= {true} richColors/>
           <Main />
           <Footer />
         </CartContextProvider>

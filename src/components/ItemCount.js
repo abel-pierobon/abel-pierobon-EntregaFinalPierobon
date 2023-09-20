@@ -41,14 +41,14 @@ function ItemCount(props) {
 
     return (
         <div className='flex flex-col items-start '>
-            <p key={props.i} className='h-8'>  Stock Disponible: <b> {stock} </b></p>
+            <p key={props.i} className=''>  Stock Disponible: <b> {stock} </b></p>
             <div className='flex justify-content=start'>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={restarClick}>expand_more</button>
                 <p className='border border-black rounded px-6 cantidad m-1'>{cantidadSeleccionada}</p>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
             {stock >= 1 || cantidadSeleccionada >= 1 ? (
-                <button className='mb-8 mt-8 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
+                <button className='mb-12 mt-8 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
                         onClick={agregar}>
                     Agregar al carrito
                 </button>
