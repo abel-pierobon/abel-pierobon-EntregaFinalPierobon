@@ -37,6 +37,8 @@ function Cart() {
             fecha: serverTimestamp(),
             productos: cart.map((item) => ({
                 id: item.id,
+                marca:item.marca,
+                sonido:item.sound,
                 cantidad: item.quantity,
                 price: item.price,
             })),
@@ -140,6 +142,7 @@ function Cart() {
                                 name="nombre" 
                                 value={formData.nombre}  
                                 onChange={handleInputChange}  
+                                required
                                 />
                             </div>
 
@@ -154,6 +157,7 @@ function Cart() {
                                 name="apellido" 
                                 value={formData.apellido}  
                                 onChange={handleInputChange} 
+                                required
                                 />
                             </div>
 
@@ -168,6 +172,7 @@ function Cart() {
                                 name="dni" 
                                 value={formData.dni}  
                                 onChange={handleInputChange} 
+                                required
                                 />
                             </div>
                             <div className="mb-4">
@@ -182,6 +187,7 @@ function Cart() {
                                 name="email" 
                                 value={formData.email}  
                                 onChange={handleInputChange} 
+                                required
                                 />
                                 <p className="text-gray-600 text-xs italic">Nunca compartiremos tu correo electrónico con nadie más.</p>
                             </div>
@@ -197,6 +203,7 @@ function Cart() {
                                 name="dirección" 
                                 value={formData.dirección}  
                                 onChange={handleInputChange} 
+                                required
                                 />
                             </div>
                             <div className="mb-4 flex justify-center">

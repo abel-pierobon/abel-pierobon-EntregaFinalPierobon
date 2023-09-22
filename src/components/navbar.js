@@ -31,10 +31,14 @@ function NavBar() {
             </div>
             <CartWidget />
             <div className={`${claseb} linka linkas ${menuOpen ? 'open' : ''}`}>
-                <NavLink to="/cat/Eléctrica" className="hover:text-red-600 mx-2">Eléctricas</NavLink>
-                <NavLink to="/cat/Acústica" className="hover:text-red-600 mx-2">Acústicas</NavLink>
-                <NavLink to="/cat/Clásica" className="hover:text-red-600 mx-2">Clásicas</NavLink>
-                <NavLink to="/ord/masvendidos" className="hover:text-red-600 mx-2">Más vendidos</NavLink>             
+                <div className="burger" onClick={cambiarClase}>
+                    <span className="material-icons text-3xl">close</span>
+                </div> 
+                <Link to={"/"} className="hover:text-red-600 font-bold text-xl m-2"> Inicio</Link>
+                <NavLink to="/cat/Eléctrica" className="hover:text-red-600 font-bold text-xl m-2">Eléctricas</NavLink>
+                <NavLink to="/cat/Acústica" className="hover:text-red-600 font-bold text-xl m-2">Acústicas</NavLink>
+                <NavLink to="/cat/Clásica" className="hover:text-red-600 font-bold text-xl m-2">Clásicas</NavLink>
+                <NavLink to="/ord/masvendidos" className="hover:text-red-600 font-bold text-xl m-2">Más vendidos</NavLink>             
             </div>
         </div>
     );
