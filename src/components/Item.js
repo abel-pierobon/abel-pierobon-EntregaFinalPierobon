@@ -13,9 +13,9 @@ function Item({ articulo }) {
                 alt={articulo.thumbnail_id}
             />
             <div>
-                <h2 className="font-black">Marca: {articulo.marca}</h2>
-                <h2 className="font-black">Estilo: {articulo.sound}</h2>
-                <p className="font-black">Precio: $ {articulo.price}</p>
+                <h2 className="font-black">Guitarra {articulo.marca}</h2>
+                <h2 className="font-black">{articulo.sound}</h2>
+                <p className="font-black">$ {articulo.price}</p>
                 {articulo.available_quantity === 0 ? (
                     <p className='flex justify-center text-red-500 font-black'>SIN STOCK</p>
                 ) : articulo.available_quantity === 1 ? (
