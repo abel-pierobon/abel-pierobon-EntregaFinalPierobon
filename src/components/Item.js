@@ -13,9 +13,6 @@ function Item({ articulo }) {
                 alt={articulo.thumbnail_id}
             />
             <div>
-                <h2 className=" text-start font-black uppercase truncate">
-                    {articulo.title}
-                </h2>
                 <h2 className="font-black">Marca: {articulo.marca}</h2>
                 <h2 className="font-black">Estilo: {articulo.sound}</h2>
                 <p className="font-black">Precio: <b>$ {articulo.price}</b></p>
