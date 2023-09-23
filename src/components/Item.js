@@ -5,7 +5,7 @@ function Item({ articulo }) {
     return (
         <article
             key={articulo.id}
-            className="grid sm:grid-cols-1 md:grid-cols-1 border border-black card shadow-md p-4 rounded-md bg-gray-200"
+            className="grid sm:grid-cols-1 md:grid-cols-1 border border-black card shadow-md p-4 rounded-md bg-gray-200 truncate"
         >
             <img
                 className="w-30 rounded"
