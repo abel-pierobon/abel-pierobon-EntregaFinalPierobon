@@ -13,7 +13,7 @@ function Item({ articulo }) {
                 alt={articulo.thumbnail_id}
             />
             <div>
-                <h2 className="h-12 text-start font-black uppercase">
+                <h2 className=" text-start font-black uppercase">
                     {articulo.title.split(' ').slice(0, 4).join(' ')}
                 </h2>
                 <h2 className="font-black">Marca: {articulo.marca}</h2>
