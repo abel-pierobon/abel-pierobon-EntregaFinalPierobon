@@ -78,7 +78,7 @@ function Cart() {
                 <div className='carrito'>
                     <section className="rounded-md ">
                             {cart.map((item) => (
-                            <section className='grid  sm:grid-cols-2 md:grid-cols-5 border border-black rounded m-4 mt-2rem p-4' key={item.id}>
+                            <section className='grid  sm:grid-cols-1 md:grid-cols-2 border border-black rounded m-4 mt-2rem p-4' key={item.id}>
                                 <div className='text-start '>
                                     <p className='font-black flex justify-center'>PRODUCTO</p>
                                     <p className='font-black flex justify-center'>{item.marca} {item.sound}</p>
@@ -115,7 +115,7 @@ function Cart() {
                             </section>
                             ))}
                             <h2 className='flex justify-center font-black text-red-700 text-2xl'>Total a pagar: ${total}</h2>
-                            <div className=' w-2/2 flex justify-center m-8'>
+                            <div className=' w-2/2 flex justify-center '>
                                 <Link to={"/"} className='flex justify-center bg-green-500 font-black hover:text-slate-100 border border-black rounded m-1 p-1 '> Seguir Comprando</Link>
                                 <button onClick={() => {
                                     vaciarCarrito();

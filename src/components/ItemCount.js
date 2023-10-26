@@ -14,7 +14,7 @@ function ItemCount(props) {
         if (stock > 0) {
             setCantidadSeleccionada(cantidadSeleccionada + 1);
             setStock((stockprevio) => stockprevio - 1);
-        }
+        }   
     };
 
     const restarClick = () => {

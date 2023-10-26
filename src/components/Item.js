@@ -13,12 +13,9 @@ function Item({ articulo }) {
                 alt={articulo.thumbnail_id}
             />
             <div>
-                <h2 className="h-12 text-start font-black uppercase">
-                    {articulo.title.split(' ').slice(0, 4).join(' ')}
-                </h2>
-                <h2 className="font-black">Marca: {articulo.marca}</h2>
-                <h2 className="font-black">Estilo: {articulo.sound}</h2>
-                <p className="font-black">Precio: <b>$ {articulo.price}</b></p>
+                <h2 className="font-black">Guitarra {articulo.marca}</h2>
+                <h2 className="font-black">{articulo.sound}</h2>
+                <p className="font-black">$ {articulo.price}</p>
                 {articulo.available_quantity === 0 ? (
                     <p className='flex justify-center text-red-500 font-black'>SIN STOCK</p>
                 ) : articulo.available_quantity === 1 ? (
@@ -26,7 +23,7 @@ function Item({ articulo }) {
                 ) : articulo.available_quantity > 1 && articulo.available_quantity < 3 ? (
                     <p className='flex justify-center text-red-500 font-bold'>ÚLTIMAS UNIDADES</p>
                 ) : (
-                    <p className="flex justify-center font-black">PRODUCTO EN STOCK</p>
+                    <p className="flex justify-center font-black"> EN STOCK</p>
                 )}
                 <NavLink to={`/prod/${articulo.id}`} className="bg-green-500 font-bold hover:font-black border border-black rounded m-1 p-1 flex justify-center ">
                     Ver producto
