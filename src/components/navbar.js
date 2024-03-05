@@ -18,7 +18,7 @@ function NavBar() {
     return (
         <div className='flex justify-around bg-sky-300 p-2'>
             <div className="flex">
-                <div className="burger" onClick={cambiarClase}>
+                <div className="burger cursor-pointer" onClick={cambiarClase}>
                     <span className="material-icons">menu</span>
                 </div> 
                 <Link to={"/"}> <img src={logo} alt="logo de marca" className="w-10 mx-10" /> </Link>
@@ -31,8 +31,8 @@ function NavBar() {
             </div>
             <CartWidget />
             <div className={`${claseb} linka linkas ${menuOpen ? 'open' : ''}`}>
-                <div className="burger" onClick={cambiarClase}>
-                    <span className="material-icons text-3xl">close</span>
+                <div className="burger cursor-pointer" onClick={cambiarClase}>
+                    <span className="material-icons font-extrabold text-3xl">close</span>
                 </div> 
                 <Link to={"/"} className="hover:text-white font-bold text-xl m-2"> Inicio</Link>
                 <NavLink to="/cat/Eléctrica" className="hover:text-white font-bold text-xl m-2">Eléctricas</NavLink>

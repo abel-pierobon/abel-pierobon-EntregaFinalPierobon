@@ -48,13 +48,13 @@ function ItemCount(props) {
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
             {cantidadSeleccionada >= 1 ? (
-                <button className='mb-12 mt-8 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
+                <button className='mb-4 mt-2 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
                         onClick={agregar}>
                     Agregar al carrito
                 </button>
             ):(<p></p>)
             }
-            {stock === 0 && cantidadSeleccionada >= 1 ? (
+            {stock === 0  ? (
                 
                 <p className='flex justify-center text-red-500 font-bold m-5'>
                     Lo sentimos... No hay mas stock disponible de este producto

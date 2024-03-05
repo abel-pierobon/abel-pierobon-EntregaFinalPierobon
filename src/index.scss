@@ -72,6 +72,9 @@ justify-content: center;
 .linkas{
     display: none;
 }
+
+
+
 @media screen and (max-width: 768px) {
     .burger {
         display: flex;
@@ -91,9 +94,9 @@ justify-content: center;
         flex-direction: column;
         position: fixed;
         left: -100%; 
-        top: 9%;
+        top: 7%;
         bottom: 0;
-        background-color: rgb(74 222 128);
+        background-color: #7dd3fc;
         opacity: 90%;
         z-index: 1;
         transition: left 1s; 
@@ -101,9 +104,9 @@ justify-content: center;
 
     .linka.open {
         left: 0px; 
-        top:9%;
+        top:7%;
         width: 100%;
-        background-color: rgb(74 222 128);
+        background-color: #7dd3fc;
         opacity: 90%;
     }
 
