@@ -47,16 +47,22 @@ function ItemCount(props) {
                 <p className='border border-black rounded px-6 cantidad m-1'>{cantidadSeleccionada}</p>
                 <button className="material-icons font-semibold border border-black rounded m-1" onClick={sumarClick}>expand_less</button>
             </div>
-            {stock >= 1 || cantidadSeleccionada >= 1 ? (
+            {cantidadSeleccionada >= 1 ? (
                 <button className='mb-12 mt-8 bg-green-500 hover:font-bold font-semibold border border-black rounded m-1 p-1' 
                         onClick={agregar}>
                     Agregar al carrito
                 </button>
-            ) : (
+            ):(<p></p>)
+            }
+            {stock === 0 && cantidadSeleccionada >= 1 ? (
+                
                 <p className='flex justify-center text-red-500 font-bold m-5'>
-                    Lo sentimos... No hay stock disponible de este producto
+                    Lo sentimos... No hay mas stock disponible de este producto
                 </p>
-            )}
+            ) : <p className='flex justify-center text-red-500 font-bold m-5'>
+                    
+                </p>
+            }
         </div>
     );
 }

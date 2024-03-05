@@ -11,6 +11,9 @@ html , body , #root {
     display: flex;
     flex-direction: column;
 }
+// .fondo{
+//     background: url('../src/components/fondoGuitarra.png');
+// }
 .imagenProducto{
     width: 100%;
     height: 100%;
@@ -24,7 +27,7 @@ html , body , #root {
 }
 .active{
     font-weight: 700;
-    color: #dc2626;
+    color: #071d35;
 }
 .carrito{
     display: flex;

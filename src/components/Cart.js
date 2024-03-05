@@ -71,7 +71,7 @@ function Cart() {
                 <div className='flex flex-col'>
                     <h2 className='flex justify-center font-black text-2xl h-16 mt-4 texto-aparecer-desaparecer'> No hay productos en el carrito..</h2>
                     <div className='flex justify-center'>
-                        <Link to={"/"} className='flex justify-center bg-green-500 font-black hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
+                        <Link to={"/"} className='flex justify-center bg-sky-300 font-black hover:text-slate-100 border border-black rounded m-1 p-1 h-10'> Mira el Catálogo de productos</Link>
                     </div>
                 </div>
                 ) : (

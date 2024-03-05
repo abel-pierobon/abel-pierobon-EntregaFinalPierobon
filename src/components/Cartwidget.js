@@ -9,7 +9,7 @@ const CartWidget = () => {
             {totalProductos === (0) ? (
                 <p className="ocultar"></p>
             ) : (
-                <span className="font-semibold font-light bg-red-600 text-slate-100 rounded-full px-1 h-6">{totalProductos}</span>
+                <span className=" font-light bg-red-600 text-slate-100 rounded-full px-1 h-6">{totalProductos}</span>
             )}
             <Link to={"/cart"} className="material-icons cartWidget " > shopping_cart </Link>
             
