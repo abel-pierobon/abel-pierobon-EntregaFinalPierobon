@@ -6,13 +6,12 @@ const CartWidget = () => {
     const totalProductos = cart.reduce((total, item) => total + item.quantity, 0);
     return(
         <div className="flex">
+            <Link to={"/cart"} className="material-icons cartWidget " > shopping_cart </Link>
             {totalProductos === (0) ? (
                 <p className="ocultar"></p>
             ) : (
-                <span className=" font-light bg-red-600 text-slate-100 rounded-full px-1 h-6">{totalProductos}</span>
+                <span className=" font-black text-red-500 text-xl ">{totalProductos}</span>
             )}
-            <Link to={"/cart"} className="material-icons cartWidget " > shopping_cart </Link>
-            
         </div>
     )
 }

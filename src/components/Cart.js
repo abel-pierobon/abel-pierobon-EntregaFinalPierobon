@@ -101,7 +101,7 @@ function Cart() {
                                 </div>
                                 <div>
                                     <div className='flex justify-center'>
-                                    <NavLink to={`/prod/${item.id}`} className=" bg-green-500 hover:text-slate-100 border border-black font-bold rounded p-1 h-auto m-1">Detalle producto</NavLink>
+                                    <NavLink to={`/prod/${item.id}`} className=" bg-sky-300 hover:text-slate-100 border border-black font-bold rounded p-1 h-auto m-1">Detalle producto</NavLink>
                                         <div className='flex justify-center font-black '>
                                             <button onClick={() => {
                                                 eliminarDelCarrito(item.id);
@@ -114,9 +114,9 @@ function Cart() {
                                 </div>
                             </section>
                             ))}
-                            <h2 className='flex justify-center font-black text-red-700 text-2xl'>Total a pagar: ${total}</h2>
+                            <h2 className='flex justify-center font-black text-red-500 text-2xl'>Total a pagar: ${total}</h2>
                             <div className=' w-2/2 flex justify-center '>
-                                <Link to={"/"} className='flex justify-center bg-green-500 font-black hover:text-slate-100 border border-black rounded m-1 p-1 '> Seguir Comprando</Link>
+                                <Link to={"/"} className='flex justify-center bg-sky-300 font-black hover:text-slate-100 border border-black rounded m-1 p-1 '> Seguir Comprando</Link>
                                 <button onClick={() => {
                                     vaciarCarrito();
                                     cart.forEach((item) => {
@@ -208,7 +208,7 @@ function Cart() {
                             </div>
                             <div className="mb-4 flex justify-center">
                                 <Link onClick={() => { laVenta(); vaciarCarrito(); cambiarClase() }} 
-                                    className="bg-green-600 hover:bg-green-400 text-black font-black border border-black py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    className="bg-sky-400 hover:bg-green-400 text-black font-black border border-black py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
                                     Realizar Pedido
                                 </Link>

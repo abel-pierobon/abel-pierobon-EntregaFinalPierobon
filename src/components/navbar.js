@@ -17,7 +17,7 @@ function NavBar() {
 
     return (
         <div className='flex justify-around bg-sky-300 p-2'>
-            <div className="flex">
+            <div className="flex justify-start">
                 <div className="burger cursor-pointer" onClick={cambiarClase}>
                     <span className="material-icons">menu</span>
                 </div> 
