@@ -37,6 +37,7 @@ function Cart() {
             fecha: serverTimestamp(),
             productos: cart.map((item) => ({
                 id: item.id,
+                descripcion: item.title,
                 marca:item.marca,
                 sonido:item.sound,
                 cantidad: item.quantity,

@@ -49,12 +49,20 @@ function ItemListContainer({ greeting }) {
     return (
         <>
             <h2 className="flex justify-center font-black text-3xl uppercase mb-4 m-4">{greeting}</h2>
+            <div className=" flex justify-center text-sky-700 text-wrap text-sm md:text-lg m-6">
+                <p className=" text-black font-black">Categorías:</p>
+                <NavLink to="/cat/Eléctrica" className=" hover:text-black font-extrabold mx-2">Eléctricas</NavLink>
+                <NavLink to="/cat/Acústica" className="hover:text-black font-extrabold mx-2">Acústicas</NavLink>
+                <NavLink to="/cat/Clásica" className="hover:text-black font-extrabold mx-2">Clásicas</NavLink>
+                <NavLink to="/ord/masvendidos" className="hover:text-black font-extrabold mx-2">Más vendidos</NavLink>
+            </div>
             <div className="flex justify-center m-6">
                 <p className="font-black">Ordenar por:</p>
                 <NavLink to="/" className="hover:text-red-600 px-1 font-bold material-icons">filter_alt_off</NavLink>
                 <NavLink to="/ord/asc" className="hover:text-red-600 px-1 font-bold">Precio Menor</NavLink>
                 <NavLink to="/ord/desc" className="hover:text-red-600 px-1 font-bold">Precio Mayor</NavLink>
             </div>
+            
             <ItemList data={data} />
         </>
     );

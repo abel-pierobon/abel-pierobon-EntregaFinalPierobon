@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect,createContext } from 'react';
 import { doc, updateDoc,increment,getDoc } from 'firebase/firestore';
 import { db } from "../firebase";
 import { toast } from 'sonner';
@@ -85,8 +85,25 @@ function CartContextProvider(props) {
         setCart([]);
         toast.success("Carrito eliminado")
     }
+    const [usuario,setUsuario]=useState('')
+
+    const updateUsuario = (user) => {
+        setUsuario(user);
+        console.log(usuario)
+    };
+    useEffect(() => {
+        // Verifica la existencia de la información del usuario en el localStorage al cargar la aplicación
+        const userId = localStorage.getItem('userId');
+        const userDisplayName = localStorage.getItem('userDisplayName');
+        const userEmail = localStorage.getItem('userEmail');
+    
+        if (userId && userDisplayName && userEmail) {
+          // Si hay información del usuario, actualiza el estado del usuario en el contexto
+        updateUsuario({ uid: userId, displayName: userDisplayName, email: userEmail });
+        }
+    }, []);
     return (
-        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito,vaciarCarrito, volverStock,sumarCart,restarCart }}>
+        <Provider value={{ cart, agregarAlCarrito, eliminarDelCarrito,vaciarCarrito, volverStock,sumarCart,restarCart,updateUsuario,usuario }}>
             {props.children}
         </Provider>
     );
