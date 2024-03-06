@@ -28,8 +28,8 @@ function NavBar() {
                 <NavLink to="/cat/Acústica" className="hover:text-white mx-2">Acústicas</NavLink>
                 <NavLink to="/cat/Clásica" className="hover:text-white mx-2">Clásicas</NavLink>
                 <NavLink to="/ord/masvendidos" className="hover:text-white mx-2">Más vendidos</NavLink>
+                <CartWidget />
             </div>
-            <CartWidget />
             <div className={`${claseb} linka linkas ${menuOpen ? 'open' : ''}`}>
                 <div className="burger cursor-pointer" onClick={cambiarClase}>
                     <span className="material-icons font-extrabold text-3xl">close</span>
