@@ -54,7 +54,7 @@ function ItemListContainer({ greeting }) {
                 <NavLink to="/cat/Eléctrica" className=" hover:text-black font-extrabold mx-2">Eléctricas</NavLink>
                 <NavLink to="/cat/Acústica" className="hover:text-black font-extrabold mx-2">Acústicas</NavLink>
                 <NavLink to="/cat/Clásica" className="hover:text-black font-extrabold mx-2">Clásicas</NavLink>
-                <NavLink to="/ord/masvendidos" className="hover:text-black font-extrabold mx-2">Más vendidos</NavLink>
+                <NavLink to="/ord/masvendidos" className="hover:text-black font-extrabold mx-2">Favoritos</NavLink>
             </div>
             <div className="flex justify-center m-6">
                 <p className="font-black">Ordenar por:</p>
