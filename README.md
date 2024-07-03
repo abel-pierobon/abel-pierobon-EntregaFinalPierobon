@@ -16,7 +16,7 @@ Al realizar el pedido se genera el comprobante de pedido y se lo suministra al c
 ### Listado de tecnologias usadas
 El proyecto se creo utilizando react version 18.2.0, react-dom versión 18.2.0 y react-router-dom versión 6.15.0.
 La base de datos se generó utilizando Firebase versión 10.3.1. 
-Para los estilos se utilizo sass y el framework CSS taelwind.
+Para los estilos se utilizo sass y el framework CSS tailwind.
 Para las notificaciones de comunicación con el usuario se utilizó sonner toast.
 
 ### Usos e instalaciones 
